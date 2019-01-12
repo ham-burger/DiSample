@@ -4,9 +4,9 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class FooModule {
+class BarRepositoryModule {
     @Provides
-    fun provideFooViewModel(): FooViewModel {
-        return FooViewModel()
+    fun provideBarRepository(): BarRepository {
+        return BarRepository()
     }
 }

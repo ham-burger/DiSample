@@ -2,7 +2,7 @@ package com.hamburger.myapplication
 
 import dagger.Component
 
-@Component(modules = [FooModule::class])
+@Component(modules = [FooViewModelModule::class, BarRepositoryModule::class])
 interface MainActivityComponent {
     fun inject(activity: MainActivity)
 }

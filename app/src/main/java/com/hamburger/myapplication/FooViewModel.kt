@@ -1,5 +1,7 @@
 package com.hamburger.myapplication
 
-class FooViewModel {
-    fun foo() = "provideFooViewModel"
+import javax.inject.Inject
+
+class FooViewModel @Inject constructor(private val barRepository: BarRepository) {
+    fun foo() = "fooViewModel : ${this.barRepository.bar()}"
 }

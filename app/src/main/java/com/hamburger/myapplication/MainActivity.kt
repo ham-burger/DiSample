@@ -8,8 +8,11 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var fooViewModel: FooViewModel
+    @Inject
+    lateinit var barRepository: BarRepository
     private val component = DaggerMainActivityComponent.builder()
-        .fooModule(FooModule())
+        .fooViewModelModule(FooViewModelModule())
+        .barRepositoryModule(BarRepositoryModule())
         .build()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +20,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         this.component.inject(this)
-
-        Log.d("test", BarViewModel(this.fooViewModel).bar())
+        // viewModelのインスタンスを取得できる
+        Log.d("test1", this.fooViewModel.foo())
+        // repositoryのインスタンスも取得できる(本来はrepositoryに直接アクセスすべきじゃない)
+        Log.d("test2", this.barRepository.bar())
     }
 }
