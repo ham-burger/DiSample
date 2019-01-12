@@ -6,7 +6,7 @@ import dagger.Provides
 @Module
 class FooModule {
     @Provides
-    fun foo(): Foo {
-        return Foo()
+    fun provideFooViewModel(): FooViewModel {
+        return FooViewModel()
     }
 }

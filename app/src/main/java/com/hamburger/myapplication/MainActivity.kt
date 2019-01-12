@@ -7,11 +7,10 @@ import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
     @Inject
-    lateinit var foo: Foo
+    lateinit var fooViewModel: FooViewModel
     private val component = DaggerMainActivityComponent.builder()
         .fooModule(FooModule())
         .build()
-//    private val component = DaggerMainActivityComponent.builder()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +18,6 @@ class MainActivity : AppCompatActivity() {
 
         this.component.inject(this)
 
-        Log.d("test", Bar(this.foo).bar())
+        Log.d("test", BarViewModel(this.fooViewModel).bar())
     }
 }
